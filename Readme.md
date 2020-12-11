@@ -1,3 +1,6 @@
 # Introduction
 
-A sample code to use for react redux using thung!
+React redux sample
+
+- redux thunk
+- redux saga
