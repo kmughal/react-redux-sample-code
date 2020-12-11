@@ -1,12 +1,17 @@
-import { connect } from "react-redux"
-import ListView from "./CityView"
-import { loadCityData, refresh } from "../actions"
+import { connect } from "react-redux";
+import ListView from "./CityView";
+import { INIT_LOAD, RELOAD_DATASET } from "../actions";
+const mapStateToProps = ({ cityStore }, ownProps) => ({ ...cityStore });
 
-const mapStateToProps = ({ cityStore }, ownProps) => ({ ...cityStore })
+const mapDispatchToAction = (dispatch) => {
+  return {
+    loadCityData: () => {
+      dispatch({ type: INIT_LOAD });
+    },
+    refresh: () => {
+      dispatch({ type: RELOAD_DATASET });
+    },
+  };
+};
 
-const mapDispatchToAction = {
-  loadCityData,
-  refresh,
-}
-
-export default connect(mapStateToProps, mapDispatchToAction)(ListView)
+export default connect(mapStateToProps, mapDispatchToAction)(ListView);

@@ -1,12 +1,18 @@
 import { createStore, applyMiddleware } from "redux"
 import reducers from "../reducers"
-import thunk from "redux-thunk"
+import createSagaMiddleware from 'redux-saga'
 import Api from "../services/api"
 const instance = new Api()
 
+import {startSaga} from "../sagas";
+
+const sageMiddleware = createSagaMiddleware();
+
 const store = createStore(
   reducers,
-  applyMiddleware(thunk.withExtraArgument(instance))
+  applyMiddleware(sageMiddleware)
 )
+
+sageMiddleware.run(startSaga)
 
 export default store

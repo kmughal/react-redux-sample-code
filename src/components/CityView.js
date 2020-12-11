@@ -1,5 +1,5 @@
 import React from "react";
-import Cities from "./Cities"
+import Cities from "./Cities";
 
 export default function ListView({
   refresh,
@@ -8,7 +8,7 @@ export default function ListView({
   list,
   loadCityData,
 }) {
-  if (!isload) loadCityData()
+  if (!isload) loadCityData();
 
   return (
     <>
@@ -18,5 +18,5 @@ export default function ListView({
       {fetching && <p>Fetching....</p>}
       {list && <Cities cities={list} />}
     </>
-  )
+  );
 }
